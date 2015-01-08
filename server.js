@@ -63,6 +63,53 @@ router.route('/bears')
 		});
 	});
 
+// Routes sem enda á /bears/:bear_id
+router.route('/bears/:bear_id')
+
+	// Ná í einn ákveðinn bear með id
+	.get(function(req, res) {
+		Bear.findById(req.params.bear_id, function(err, bear) {
+			if (err) {
+				res.send(err);
+			} else {
+				res.json(bear);
+			}
+		});
+	})
+
+	// Update bear
+	.put(function(req, res) {
+		Bear.findById(req.params.bear_id, function(err, bear) {
+			if (err) {
+				res.send(err);
+			} else {
+				bear.name = req.body.name;
+
+				// Save
+				bear.save(function(err) {
+					if (err) {
+						res.send(err);
+					} else {
+						res.json({ message: 'Bear uppfærður' });
+					}
+				});
+			}
+		});
+	})
+
+	// Delete bear
+	.delete(function(req, res) {
+		Bear.remove({
+			_id: req.params.bear_id
+		}, function(err, bear) {
+			if (err) {
+				res.send(err);
+			} else {
+				res.json({ message: 'Bear deleted' });
+			}
+		});
+	});
+
 // VIRKJA ROUTES
 // ==============================================================
 
