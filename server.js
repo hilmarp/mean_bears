@@ -36,6 +36,33 @@ router.get('/', function(req, res) {
 	res.json({ message: 'Þetta virkar!' });
 });
 
+// Routes sem enda á /bears
+router.route('/bears')
+
+	.get(function(req, res) {
+		Bear.find(function(err, bears) {
+			if (err) {
+				res.send(err);
+			} else {
+				res.json(bears);
+			}
+		});
+	})
+
+	// Búa til bear
+	.post(function(req, res) {
+		var bear = new Bear();
+		bear.name = req.body.name;
+
+		bear.save(function(err) {
+			if (err) {
+				res.send(err);
+			} else {
+				res.json({ message: 'Bear ' + bear.name + ' búinn til!' });
+			}
+		});
+	});
+
 // VIRKJA ROUTES
 // ==============================================================
 
