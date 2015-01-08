@@ -1,0 +1,25 @@
+{
+  "name": "mean_bears",
+  "version": "1.0.0",
+  "description": "Bears API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hilmarp/mean_bears.git"
+  },
+  "author": "Hilmar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hilmarp/mean_bears/issues"
+  },
+  "homepage": "https://github.com/hilmarp/mean_bears",
+  "dependencies": {
+    "body-parser": "^1.10.1",
+    "express": "^4.10.7",
+    "mongoose": "^3.8.21"
+  }
+}
